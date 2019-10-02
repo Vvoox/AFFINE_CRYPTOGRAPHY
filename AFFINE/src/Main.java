@@ -1,7 +1,13 @@
 
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 public class Main {
+    static int counter = 0;
+    static StringBuilder output=new StringBuilder();
 
     public static void main(String[] args) {
         Scanner sss = new Scanner(System.in);
@@ -45,6 +51,8 @@ public class Main {
             }
 
         }
+        System.out.println("\n");
+        //dict();
 
 
     }
@@ -95,6 +103,7 @@ public class Main {
 
         String[] CODE = new String[26];
         int[] CODE1 = new int[26];
+
         CODE = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
         CODE1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25};
 
@@ -114,7 +123,7 @@ public class Main {
         }
 
         int fct = 0;
-        int counter = 0;
+        //int counter = 0;
         System.out.print("\n");
         int k11 = 0;
         int product = 0;
@@ -186,8 +195,8 @@ public class Main {
                     product = k1 * i;
                     if (product % 26 == 1) {
                         k11 = i;
-                        System.out.print("A="+k1+",");
-                        System.out.print("B="+k2+" ");
+                       // System.out.print("A="+k1+",");
+                        //System.out.print("B="+k2+" ");
                         for (int j = 0; j < text.length(); j++) {
 
                             fct = k11 * (Integer.valueOf(tab1[j]) - k2);
@@ -203,23 +212,99 @@ public class Main {
                             //System.out.print(CODE[fct]);
 
                         }
-                        for (int p = 0; p < 63; p++) {
+                        /*for (int p = 0; p < tab2.length; p++) {
 
                             System.out.print(tab2[p]);
 
-                        }
-                        System.out.print("\n");
+
+                        }*/
+                        System.out.println("\n");
+                        //for (int wrd = 5; wrd < 6; wrd++) {
+                        dict(tab2,k1,k2,4);
                     }
 
 
                         }
 
+
                 }
 
         }
-        }
+        System.out.println(counter);
+        System.out.println(output);
+        //show
 
     }
+    //rllqqpxelrzetlmzjqzp
+    public static int[] dict(String[] tab,int A , int B,int wrd) {
+
+        // The name of the file to open.
+        String fileName = "C:\\Users\\yama-\\Desktop\\CRYPTO\\src\\words.txt";
+
+        StringBuilder text1 = new StringBuilder();
+        String out="";
+        int[] coef_dic = new int[2];
+
+            for (int i = 0; i < wrd; i++) {
+                //if(wrd>text1.length()){break;}
+                text1.append(tab[i]);
+            }
+            //System.out.println(text1);
+            String text2 = text1.toString();
+            // This will reference one line at a time
+            String line = null;
+
+            try {
+
+                FileReader fileReader =
+                        new FileReader(fileName);
+
+
+                BufferedReader bufferedReader =
+                        new BufferedReader(fileReader);
+
+                while ((line = bufferedReader.readLine()) != null) {
+
+                    if (text2.equals(line)) {
+                        out = "The word found is  :" + text1 +" | in A = "+A+" and B = "+B +" |";
+                        // System.out.println(out);
+                       // System.out.println("in A = " + A + " and B = " + B);
+                        coef_dic[0] = A;
+                        coef_dic[1] = B;
+                        counter += 1;
+                        output.append(out);
+                        output.append("\n");
+
+                    }
+
+                }
+                // System.out.println(counter);
+
+
+                bufferedReader.close();
+            } catch (FileNotFoundException ex) {
+                System.out.println(
+                        "Unable to open file '" +
+                                fileName + "'");
+            } catch (IOException ex) {
+                System.out.println(
+                        "Error reading file '"
+                                + fileName + "'");
+
+
+            }
+
+            return coef_dic;
+
+
+    }
+
+
+    public static void show(String text , int A  , int B){
+
+
+    }
+}
 
 
 

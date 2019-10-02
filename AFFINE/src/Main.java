@@ -21,16 +21,29 @@ public class Main {
 
         }
         else {
-            System.out.print("Enter your text : ");
-            Scanner ss = new Scanner(System.in);
-            String text = ss.nextLine();
-            System.out.print("Your first coeff :");
-            Scanner sc = new Scanner(System.in);
-            int k1 = sc.nextInt();
-            System.out.print("Your second coeff : ");
-            Scanner sc1 = new Scanner(System.in);
-            int k2 = sc1.nextInt();
-            decry_affine(k1 , k2 ,text);
+            System.out.print("If you have the two keys enter 'YES' , else 'NO' : ");
+            Scanner ss1 = new Scanner(System.in);
+            String key = ss1.nextLine();
+            if(key.equals("YES")){
+                System.out.print("Enter your text : ");
+                Scanner ss = new Scanner(System.in);
+                String text = ss.nextLine();
+                System.out.print("Your first coeff :");
+                Scanner sc = new Scanner(System.in);
+                int k1 = sc.nextInt();
+                System.out.print("Your second coeff : ");
+                Scanner sc1 = new Scanner(System.in);
+                int k2 = sc1.nextInt();
+                decry_affine(k1 , k2 ,text);
+            }
+            else {
+                System.out.print("Enter your text : ");
+                Scanner ss = new Scanner(System.in);
+                String text = ss.nextLine();
+                Brute_Force_affine(text);
+
+            }
+
         }
 
 
@@ -134,7 +147,82 @@ public class Main {
             }
             System.out.println("\n");
         }
+    public static void Brute_Force_affine(String text) {
+
+        String[] CODE = new String[26];
+        int[] CODE1 = new int[26];
+        CODE = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        CODE1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25};
 
 
+        String[] tab = text.split("");
+        String[] tab1 = new String[text.length()];
+        String[] tab2 = new String[text.length()];
+
+        //int[] tab1 = new int[tab.length];
+        for (int i = 0; i < text.length(); i++) {
+            for (int j = 0; j < 26; j++) {
+                if (tab[i].equals(CODE[j])) {
+
+                    tab1[i] = String.valueOf(CODE1[j]);
+                }
+            }
+        }
+        System.out.print("\n");
+        for (int j = 0; j < tab.length; j++) {
+
+            System.out.print(tab1[j]);
+        }
+
+        int fct = 0;
+        System.out.print("\n");
+        int k11 = 0;
+        //int k2=0;
+        int product = 0;
+        for(int k1=0 ; k1<26; k1++) {
+            for (int k2 = 0; k2 < 26; k2++) {
+                for (int i = 0; i < 26; i++) {
+
+                    product = k1 * i;
+                    if (product % 26 == 1) {
+                        k11 = i;
+                        System.out.print("A="+k1+",");
+                        System.out.print("B="+k2+" ");
+                        for (int j = 0; j < text.length(); j++) {
+
+                            fct = k11 * (Integer.valueOf(tab1[j]) - k2);
+
+                            fct = fct % 26;
+                               // System.out.println(fct);
+                            if (fct < 0) {
+
+                                fct = fct + 26;
+                            }
+
+                            tab2[j] = CODE[fct];
+                            //System.out.print(CODE[fct]);
+
+                        }
+                        for (int p = 0; p < 63; p++) {
+
+                            System.out.print(tab2[p]);
+
+                        }
+                        System.out.print("\n");
+                    }
+
+
+                        }
+
+                }
+
+        }
+        }
 
     }
+
+
+
+
+
+

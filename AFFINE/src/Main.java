@@ -219,8 +219,8 @@ public class Main {
 
                         }*/
                         System.out.println("\n");
-                        //for (int wrd = 5; wrd < 6; wrd++) {
-                        dict(tab2,k1,k2,4);
+                        for (int wrd = 3; wrd < 7; wrd++) {
+                        dict(tab2,k1,k2,wrd);}
                     }
 
 

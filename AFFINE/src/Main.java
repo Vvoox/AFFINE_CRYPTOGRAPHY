@@ -61,9 +61,8 @@ public class Main {
 
         String[] CODE = new String[26];
         int[] CODE1 = new int[26];
-        CODE = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        CODE = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
         CODE1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25};
-
 
         String[] tab = text.split("");
         String[] tab1 = new String[text.length()];
@@ -220,6 +219,9 @@ public class Main {
                         }*/
                         System.out.println("\n");
                         for (int wrd = 3; wrd < 7; wrd++) {
+                            if(wrd>tab2.length){
+                                break;
+                            }
                         dict(tab2,k1,k2,wrd);}
                     }
 

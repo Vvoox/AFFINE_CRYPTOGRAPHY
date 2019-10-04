@@ -46,7 +46,10 @@ public class Main {
                 System.out.print("Enter your text : ");
                 Scanner ss = new Scanner(System.in);
                 String text = ss.nextLine();
-                Brute_Force_affine(text);
+                System.out.print("Choose 1 language between : 'Frensh' or 'English' ");
+                Scanner sl = new Scanner(System.in);
+                String lang = sl.nextLine();
+                Brute_Force_affine(text,lang);
 
             }
 
@@ -155,7 +158,7 @@ public class Main {
             }
             System.out.println("\n");
         }
-    public static void Brute_Force_affine(String text) {
+    public static void Brute_Force_affine(String text , String language) {
 
         String[] CODE = new String[26];
         int[] CODE1 = new int[26];
@@ -222,7 +225,7 @@ public class Main {
                             if(wrd>tab2.length){
                                 break;
                             }
-                        dict(tab2,k1,k2,wrd);}
+                        dict(tab2,k1,k2,wrd,language);}
                     }
 
 
@@ -235,13 +238,19 @@ public class Main {
         System.out.println(counter);
         System.out.println(output);
         //show
-
     }
     //rllqqpxelrzetlmzjqzp
-    public static int[] dict(String[] tab,int A , int B,int wrd) {
+    public static int[] dict(String[] tab,int A , int B,int wrd , String language) {
 
         // The name of the file to open.
-        String fileName = "C:\\Users\\yama-\\Desktop\\CRYPTO\\src\\words.txt";
+        String fileName="";
+        if(language.equals("English")){
+            fileName = "C:\\Users\\yama-\\Desktop\\CRYPTO\\src\\English.txt";
+        }
+        else {
+            fileName = "C:\\Users\\yama-\\Desktop\\CRYPTO\\src\\Frensh.txt";
+        }
+
 
         StringBuilder text1 = new StringBuilder();
         String out="";
@@ -302,10 +311,6 @@ public class Main {
     }
 
 
-    public static void show(String text , int A  , int B){
-
-
-    }
 }
 
 
